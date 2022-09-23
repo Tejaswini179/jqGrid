@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">  
+    <link rel="stylesheet" href="./css/ui.jqgrid.css">
+<body>
+    <table id="grid"></table>
+<div id="pager"></div>
+<script>
+$("#grid").jqGrid({
+datatype: "json",
+url: "data.php",
+pager: "#pager",
+colModel: [
+{ name: "name", label: 'Name' },
+{ name: "phone_number", label: 'Phone Number' },
+{ name: "email", label: 'Email' }
+]
+});
+</script>
+   </body>
+</html>

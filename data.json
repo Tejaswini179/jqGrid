@@ -27,6 +27,8 @@
 		{"OrderID":"10272","OrderDate":"1996-08-02","CustomerID":"RATTC","ShipName":"Rattlesnake Canyon Grocery","Freight":"98.0300"},
 		{"OrderID":"10273","OrderDate":"1996-08-05","CustomerID":"QUICK","ShipName":"QUICK-Stop","Freight":"76.0700"},
 		{"OrderID":"10274","OrderDate":"1996-08-06","CustomerID":"VINET","ShipName":"Vins et alcools Chevalier","Freight":"6.0100"},
-		{"OrderID":"10275","OrderDate":"1996-08-07","CustomerID":"MAGAA","ShipName":"Magazzini Alimentari Riuniti","Freight":"26.9300"}
+		{"OrderID":"10275","OrderDate":"1996-08-07","CustomerID":"MAGAA","ShipName":"Magazzini Alimentari Riuniti","Freight":"26.9300"},
+		{"OrderID":"10276","OrderDate":"1996-08-08","CustomerID":"TORTU","ShipName":"Tortuga Restaurante","Freight":"13.8400"},
+		{"OrderID":"10277","OrderDate":"1996-08-09","CustomerID":"MORGK","ShipName":"Morgenstern Gesundkost","Freight":"125.7700"}
 	]
 }

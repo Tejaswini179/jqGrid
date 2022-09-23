@@ -19,164 +19,37 @@
 </head>
 <body>
 
-    <style type="text/css">
+    <table id="list27"></table>
+    <div id="pager27" ></div>
 
-        /* set the size of the datepicker search control for Order Date*/
-        #ui-datepicker-div { font-size:11px; }
-        
-        /* set the size of the autocomplete search control*/
-        .ui-menu-item {
-            font-size: 11px;
-        }
-
-         .ui-autocomplete {
-            font-size: 11px;
-        }       
-
-
-    </style>
-
-    <table id="jqGrid"></table>
-    <div id="jqGridPager"></div>
-
-    <script type="text/javascript"> 
-    
-        $(document).ready(function () {
-			
-            $("#jqGrid").jqGrid({
-                url: 'data.json',
-				search : true,
-                mtype: "GET",
-                datatype: "json",
-                page: 1,
-				autoResizing : true,
-                colModel: [
-                    {   label : "Order ID",
-						name: 'OrderID', 
-						key: true, 
-						width: 75,
-						searchoptions :  { sopt : ["eq"]}
-					},
-                    {
-						label: "Customer ID",
-                        name: 'CustomerID',
-						editable: true,
-                        width: 150,
-						edittype : 'select',
-						editoptions: { value: ":[All];ALFKI:ALFKI;ANATR:ANATR;ANTON:ANTON;AROUT:AROUT;BERGS:BERGS;BLAUS:BLAUS;BLONP:BLONP;BOLID:BOLID;BONAP:BONAP;BOTTM:BOTTM;BSBEV:BSBEV;CACTU:CACTU;CENTC:CENTC;CHOPS:CHOPS;COMMI:COMMI;CONSH:CONSH;DRACD:DRACD;DUMON:DUMON;EASTC:EASTC;ERNSH:ERNSH;FAMIA:FAMIA;FOLIG:FOLIG;FOLKO:FOLKO;FRANK:FRANK;FRANR:FRANR;FRANS:FRANS;FURIB:FURIB;GALED:GALED;GODOS:GODOS;GOURL:GOURL;GREAL:GREAL;GROSR:GROSR;HANAR:HANAR;HILAA:HILAA;HUNGC:HUNGC;HUNGO:HUNGO;ISLAT:ISLAT;KOENE:KOENE;LACOR:LACOR;LAMAI:LAMAI;LAUGB:LAUGB;LAZYK:LAZYK;LEHMS:LEHMS;LETSS:LETSS;LILAS:LILAS;LINOD:LINOD;LONEP:LONEP;MAGAA:MAGAA;MAISD:MAISD;MEREP:MEREP;MORGK:MORGK;NORTS:NORTS;OCEAN:OCEAN;OLDWO:OLDWO;OTTIK:OTTIK;PERIC:PERIC;PICCO:PICCO;PRINI:PRINI;QUEDE:QUEDE;QUEEN:QUEEN;QUICK:QUICK;RANCH:RANCH;RATTC:RATTC;REGGC:REGGC;RICAR:RICAR;RICSU:RICSU;ROMEY:ROMEY;SANTG:SANTG;SAVEA:SAVEA;SEVES:SEVES;SIMOB:SIMOB;SPECD:SPECD;SPLIR:SPLIR;SUPRD:SUPRD;THEBI:THEBI;THECR:THECR;TOMSP:TOMSP;TORTU:TORTU;TRADH:TRADH;TRAIH:TRAIH;VAFFE:VAFFE;VICTE:VICTE;VINET:VINET;WANDK:WANDK;WARTH:WARTH;WELLI:WELLI;WHITC:WHITC;WILMK:WILMK;WOLZA:WOLZA" },
-                        stype: "select"
-                    },
-                    { 
-						label: "Order Date",
-                        name: 'OrderDate',
-                        width: 150,
-						index : 'mydate',
-						sorttype:'date',
-						formatter: 'date',
-						formatoptions : {
-							srcformat: 'Y-m-d',
-							newformat: 'j.F'
-						},
-                        searchoptions: {
-							sopt : ['eq'],
-                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
-                            // use it to place a third party control to customize the toolbar
-                            dataInit: function (element) {
-                                $(element).datepicker({
-                                    id: 'orderDate_datePicker',
-                                    dateFormat: 'd.MM',
-                                    //minDate: new Date(2010, 0, 1),
-                                    maxDate: new Date(2020, 0, 1),
-                                    showOn: 'focus'
-                                });
-                            }
-                        }
-                    },
-					{
-						name : 'mydate',
-						hidden: true,
-						jsonmap : function(item) {
-							return  $.jgrid.parseDate.call($("#jqGrid")[0] , 'Y-m-d', item.OrderDate , 'j.F'); 
-						}
-					},
-                    {
-						label : "Ship Name",
-                        name: 'ShipName',
-                        width: 150,
-						search : false,
-                        searchoptions: {
-                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
-                            // use it to place a third party control to customize the toolbar
-                            dataInit: function (element) {
-                                $(element).autocomplete({
-                                    id: 'AutoComplete',
-                                    source: function(request, response){
-										this.xhr = $.ajax({
-											url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/autocompletep.php?callback=?&acelem=ShipName',
-											data: request,
-											dataType: "jsonp",
-											success: function( data ) {
-												response( data );
-											},
-											error: function(model, response, options) {
-												response([]);
-											}
-										});
-									},
-                                    autoFocus: true
-                                });
-                            },
-							sopt : ['cn']
-                        }
-                    },
-                    {
-						label: "Freight",
-						search : true,
-						searchoptions: {
-							sopt : ['tst', 'eq']
-						},
-						sorttype: 'number',
-						name: 'Freight', 
-						width: 150,
-						align : "right",
-						formatter : 'number'
-					}
-                ],
-				customFilterDef : {
-					tst : {
-						"operand" : "=<",
-						"text" : "My less text",
-						action : function (op) {
-							console.log(this. op);
-							return parseFloat(op.searchValue) >= parseFloat(op.rowItem.Freight);
-						}
-					}
-				},
-				loadonce: true,
-				viewrecords: true,
-				responsive : true,
-				rowList : [10,20],
-				//toppager : true,
-                width: 780,
-                height: 150,
-                rowNum: 10,
-                pager: "#jqGridPager"
-            });
-			// activate the toolbar searching
-            $('#jqGrid').jqGrid('filterToolbar',{restoreFromFilters : true, searchOperators : true});
-			$('#jqGrid').jqGrid('navGrid',"#jqGridPager", {                
-                search: true, // show search button on the toolbar
-                add: true,
-                edit: true,
-                del: true,
-                refresh: true
-            },{},{},{},{showQuery : true, multipleSearch: false})
-			setTimeout(function( ) {
-				$('#jqGrid').jqGrid('autoSelect',{ field: "CustomerID"});
-			}, 100);
-        });
-
+    <script>
+  jQuery("list27").jqGrid({
+   	url:'localset.php',
+	datatype: "json",
+	height: 255,
+	width: 600,
+   	colNames:['First_Name','Last_Name', 'DOB','Email'],
+   	colModel:[
+   		{name:'First_Name',index:'First_Name', width:65,  sorttype:'string', searchoptions:{sopt:['eq','ne','le','lt','gt','ge']}},
+   		{name:'Last_Name',index:'Last_Name', width:150, sorttype:'string', searchoptions:{sopt:['eq','bw','bn','cn','nc','ew','en']}},
+   		{name:'DOB',index:'DOB', width:65,  sorttype:'integer', searchoptions:{sopt:['eq','ne','le','lt','gt','ge']}},
+   		{name:'Email',index:'Email', width:150, sorttype:'string', searchoptions:{sopt:['eq','bw','bn','cn','nc','ew','en']}},
+   	],
+   	rowNum:50,
+	rowTotal: 200,
+	rowList : [20,30,50],
+	loadonce:true,
+   	mtype: "GET",
+	rownumbers: true,
+	rownumWidth: 40,
+	gridview: true,
+   	pager: '#pager27',
+   	sortname: 'item_id',
+    viewrecords: true,
+    sortorder: "asc",
+	caption: "Loading data from server at once"	
+});
+jQuery("#list27").jqGrid('filterToolbar',{searchOperators : true});
     </script>
-
     
 </body>

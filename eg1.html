@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">  
+    <link rel="stylesheet" href="./css/ui.jqgrid.css">
+<body>
+    <table id="quickstart_grid"></table>
+    <script src="./js//jquery-1.7.2.min.js"></script>
+  
+    <script src="./js/jquery.jqGrid.min.js"></script> 
+    <script>
+    var dataArray = [
+    {name: 'Bob', phone: '232-532-6268'},
+    {name: 'Jeff', phone: '365-267-8325'}
+    ];
+    $("#quickstart_grid").jqGrid({
+    datatype: 'local',
+    data: dataArray,
+    colModel: [
+    {name: 'name', label: 'Name'},
+    {name: 'phone', label: 'Phone Number'}
+    ]
+    });
+    </script>
+   </body>
+</html>

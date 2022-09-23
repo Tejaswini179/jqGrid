@@ -15,7 +15,7 @@
     <!-- <script src="C:\wamp64\www\jqgrid\js\jquery.min.js"></script>
     <script src="C:\wamp64\www\jqgrid\js\trirand\jquery.jqGrid.min.js"></script> -->
     <script src="./js/jquery.jqGrid.min.js"></script> 
-<script type="text/javascript">
+    <script type="text/javascript">
     // $(function () {
     //     "use strict";
     //     $("#grid").jqGrid({
@@ -40,16 +40,15 @@ jQuery("#list4").jqGrid({
     caption: "Manipulating Array Data"
 });
 var mydata = [
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"},
-        {id:"1",First_Name:"sivaji",Last_Name:"panda",DOB:"2007-10-01",Email:"pandasivaji@gmail.com"}
+        {id:"1",First_Name:"Tejaswini",Last_Name:"Khengare",DOB:"2003-10-08",Email:"tejaswini@gmail.com"},
+        {id:"2",First_Name:"Akshada",Last_Name:"Khengare",DOB:"1998-09-01",Email:"akshada@gmail.com"},
+        {id:"3",First_Name:"Rucha",Last_Name:"Singh",DOB:"2001-10-09",Email:"rucha@gmail.com"},
+        {id:"4",First_Name:"Meghna",Last_Name:"Salke",DOB:"1989-11-02",Email:"meghna@gmail.com"},
+        {id:"5",First_Name:"Neha",Last_Name:"Gore",DOB:"2009-12-14",Email:"neha@gmail.com"},
+       
         
         ];
+        
 for(var i=0;i<=mydata.length;i++)
     jQuery("#list4").jqGrid('addRowData',i+1,mydata[i]);
 })

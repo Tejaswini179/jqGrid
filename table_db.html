@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">  
+    <link rel="stylesheet" href="./css/ui.jqgrid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+
+   <!-- <link rel='stylesheet' type='text/css'
+	href='https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css' />
+<link rel='stylesheet' type='text/css'
+	href='http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css' /> -->
+
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type='text/javascript'
+	src='http://www.trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js'></script>
+<script type='text/javascript'
+	src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
+<script type='text/javascript'
+	src='http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js'></script>
+
+    <script type="text/javascript">
+
+ $(function(){
+        jQuery("#grps").jqGrid({
+              url:'localhost.php',
+           datatype: "json",
+              colNames:['id','First_Name', 'Last_Name','DOB','Email'],
+              colModel:[
+                  {name:'id',	key : true,	index:'id',	width:55},
+                  {name:'First_Name',index:'First_Name', width:90},
+                  {name:'Last_Name', index:'Last_Name',	width:100},
+                  {name:'DOB',index:'DOB', width:80, align:"right"},
+                  {name:'Email',index:'Email', width:80, align:"right"},
+                  // {name:'total',index:'total', width:80,align:"right"},
+                  // {name:'note',index:'note', width:150, sortable:false}
+              ],
+           
+              rowNum:10,
+           width:700,
+              rowList:[1,20,30],
+              pager: '#pgrps',
+              sortname: 'DOB',
+           viewrecords: true,
+        //    sortorder: "desc",
+        //    jsonReader: {
+        //        repeatitems : false
+        //    },
+           caption: "Complex search",
+           height: '100%'
+       });
+       
+    //    jQuery("#grps").jqGrid('navGrid','#pgrps',
+    //    {edit:false,add:false,del:false},
+    //    {},
+    //    {},
+    //    {},
+    //    {multipleSearch:true, multipleGroup:true}
+    //    );
+    });
+              
+           </script>
+   
+</head>
+<body>
+            
+    <table id="grps"></table>
+    <div id="pgrps"></div>
+
+ 
+   
+    <!-- <h1>hi</h1> -->
+
+</body>
+</html>

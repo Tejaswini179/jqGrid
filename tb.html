@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css">  
+    <link rel="stylesheet" href="./css/ui.jqgrid.css"> -->
+<!-- 
+<link rel="stylesheet" href="C:\wamp64\www\jqgrid\css\ui.jqgrid.css">
+    <link rel="stylesheet" href="C:\wamp64\www\jqgrid\css\jquery-ui.css"> -->
+    <!-- <script src="./js//jquery-1.7.2.min.js"></script> -->
+    <!-- <script src="C:\wamp64\www\jqgrid\js\jquery.min.js"></script>
+    <script src="C:\wamp64\www\jqgrid\js\trirand\jquery.jqGrid.min.js"></script> -->
+    <!-- <script src="./js/jquery.jqGrid.min.js"></script>  -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/themes/redmond/jquery-ui.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <table id="grps3"></table>
+    <div id="pgrps3"></div>
+
+    <script>
+
+// var template1 =
+// { "groupOp": "AND",
+//       "rules": [
+//         { "field": "b.name", "op": "bw", "data": "Client 1" },
+//         { "field": "a.amount", "op": "gt", "data": "20"}
+//       ]
+// };
+
+// var template2 =
+// { "groupOp": "AND",
+//       "rules": [
+//         { "field": "b.name", "op": "eq", "data": "Client 2" },
+//         { "field": "a.id", "op": "le", "data": "10"}
+//       ]
+// } ;
+
+
+jQuery("#grps3").jqGrid({
+   	// url:'local',
+	datatype: "local",
+    data:mydata,
+   	colNames:['Inv No', 'Date', 'Client', 'Amount','Tax','Total','Notes'],
+   	colModel:[
+   		{name:'id',	key : true,	index:'a.id',	width:55, searchtype:"number"},
+   		{name:'invdate',index:'a.invdate', width:90},
+   		{name:'name', index:'b.name',	width:100},
+   		{name:'amount',index:'a.amount', width:80, align:"right", searchtype:"number"},
+   		{name:'tax',index:'a.tax', width:80, align:"right", searchtype:"number"},
+   		{name:'total',index:'a.total', width:80,align:"right", searchtype:"number"},
+   		{name:'note',index:'a.note', width:150, sortable:false}
+   	],
+   	rowNum:10,
+    width:700,
+   	rowList:[10,20,30],
+   	pager: '#pgrps3',
+   	sortname: 'invdate',
+    viewrecords: true,
+    sortorder: "desc",
+	caption: "Show query in search",
+	height: '100%'
+});
+
+var mydata = [
+		{id:"1",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"2",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"3",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+		{id:"4",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"5",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"6",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+		{id:"7",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+		{id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+		{id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
+		];
+for(var i=0;i<=mydata.length;i++)
+	jQuery("#grps3").jqGrid('addRowData',i+1,mydata[i]);
+
+jQuery("#grps3").jqGrid('navGrid','#pgrps3',
+{edit:false,add:false,del:false},
+{},
+{},
+{},
+{
+	multipleSearch:true,
+	multipleGroup:true,
+	showQuery: true,
+    // set the names of the template
+    // "tmplNames" : ["Template One", "Template Two"],
+    // // set the template contents
+    // "tmplFilters": [template1, template2]
+}
+);
+
+    </script>
+
+</body>
+</html>
