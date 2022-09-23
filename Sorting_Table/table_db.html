@@ -14,19 +14,6 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
 
-   <!-- <link rel='stylesheet' type='text/css'
-	href='https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css' />
-<link rel='stylesheet' type='text/css'
-	href='http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css' /> -->
-
-<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script type='text/javascript'
-	src='http://www.trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js'></script>
-<script type='text/javascript'
-	src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
-<script type='text/javascript'
-	src='http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js'></script>
-
     <script type="text/javascript">
 
  $(function(){
@@ -40,8 +27,6 @@
                   {name:'Last_Name', index:'Last_Name',	width:100},
                   {name:'DOB',index:'DOB', width:80, align:"right"},
                   {name:'Email',index:'Email', width:80, align:"right"},
-                  // {name:'total',index:'total', width:80,align:"right"},
-                  // {name:'note',index:'note', width:150, sortable:false}
               ],
            
               rowNum:10,
@@ -50,21 +35,10 @@
               pager: '#pgrps',
               sortname: 'DOB',
            viewrecords: true,
-        //    sortorder: "desc",
-        //    jsonReader: {
-        //        repeatitems : false
-        //    },
            caption: "Complex search",
            height: '100%'
        });
-       
-    //    jQuery("#grps").jqGrid('navGrid','#pgrps',
-    //    {edit:false,add:false,del:false},
-    //    {},
-    //    {},
-    //    {},
-    //    {multipleSearch:true, multipleGroup:true}
-    //    );
+
     });
               
            </script>
@@ -74,10 +48,6 @@
             
     <table id="grps"></table>
     <div id="pgrps"></div>
-
- 
-   
-    <!-- <h1>hi</h1> -->
 
 </body>
 </html>
